@@ -2,7 +2,7 @@ import requests
 import json
 
 def get_movie_details(movie_id):
-    response = requests.get(f"https://api.watchmode.com/v1/title/{movie_id}/sources/?apiKey=FKQxqKBVB3KxfSZRyzlvoba7Xpxu6IDjpPdNOMEX")
+    response = requests.get(f"https://api.watchmode.com/v1/title/{movie_id}/sources/?apiKey={YOUR API KEY HERE}")
     details_data = response.json()
     return details_data
 
@@ -31,7 +31,7 @@ genre_ids = {
 genre_choice = input("What kind of movie would you like to watch? (comedy, thriller, horror) ")
 
 params = {
-    "api_key": "ff3805871fc2a8fdea128d18f51ce96b",
+    "api_key": "{YOUR API KEY HERE}",
     "include_adult": False,
     "include_video": False,
     "language": "en-US",
@@ -54,7 +54,7 @@ if user_choice in map(str, range(1, 11)):
     chosen_index = int(user_choice) - 1
     tmdb_id = data[chosen_index]["id"]
     watchmode_params = {
-        "apiKey": "FKQxqKBVB3KxfSZRyzlvoba7Xpxu6IDjpPdNOMEX",
+        "apiKey": "{YOUR API KEY HERE}",
         "search_field":"tmdb_movie_id",
         "search_value": tmdb_id
     }
