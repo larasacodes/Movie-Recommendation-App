@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+</head>
+<body>
+    <h2>Movie Selection Results</h2>
+    {# {% if watchmode_details %}
+        <h2>Movie Details</h2>
+        <p>{{ watchmode_details }}</p>
+    {% endif %}  #}
+    {% if watchmode_details %}
+        <h2>Movie Details</h2>
+        <ul>
+            {% for results in watchmode_details %}
+                <li>
+                    {{ results }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br>
+    <a href="{{ url_for('homepage') }}" class="btn btn-light m-1">Go Back to Homepage</a>
+</body>
+</html>

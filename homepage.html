@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Selector</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body class="bg-dark text-light h-100 d-flex flex-column justify-content-center align-items-center">
+    <h1>Welcome to the Movie Selector</h1>
+    <form action="/selection" method="post">
+        <label for="genre_choice">Do you know what kind of movie you would like to watch? (comedy, thriller, horror...) If you would like to search for a title, type 'no', or enter 'surprise me':</label>
+        <input type="text" id="genre_choice" name="genre_choice" required>
+        <button type="submit" class="btn btn-light m-1">Search</button>
+
+    {% if list_of_movies %}
+        <h2>Movie Genre Results</h2>
+        <p>Click 'Details' for the movie you want to find out more about!</p>
+        <form action="/selection" method="post">
+            {% for result in list_of_movies %}
+            <div>
+                <strong>{{ result['title'] }}</strong><br>
+                Overview: {{ result['overview'] }}<br>
+                <button type="submit" name="user_choice" value="{{ loop.index }}" class="btn btn-light m-1">Details</button>
+                <input type="hidden" name="genre_choice" value="{{ genre_choice }}">
+                <!-- <a href="{{ url_for('selection', genre_choice=genre_choice, user_choice=loop.index) }}">Details</a> -->
+            </div>
+            {% endfor %}
+        </form>
+
+    {% endif %}
+
+    </form>
+
+</body>
+</html>
