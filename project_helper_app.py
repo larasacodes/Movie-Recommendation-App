@@ -9,7 +9,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 def get_movie_details(movie_id):
-    response = requests.get(f"https://api.watchmode.com/v1/title/{movie_id}/sources/?apiKey=FKQxqKBVB3KxfSZRyzlvoba7Xpxu6IDjpPdNOMEX")
+    response = requests.get(f"https://api.watchmode.com/v1/title/{movie_id}/sources/?apiKey={YOUR API KEY HERE}")
     details_data = response.json()
     return details_data
 
@@ -59,7 +59,7 @@ def selection():
 
         if genre_choice in genre_ids:
             params = {
-                "api_key": "ff3805871fc2a8fdea128d18f51ce96b",
+                "api_key": "{YOUR API KEY HERE}",
                 "include_adult": False,
                 "include_video": False,
                 "language": "en-US",
@@ -98,7 +98,7 @@ def selection():
             while True:
                 wm_id = get_random_wm_id()
                 watchmode_params = {
-                    "apiKey": "FKQxqKBVB3KxfSZRyzlvoba7Xpxu6IDjpPdNOMEX",
+                    "apiKey": "{YOUR API KEY HERE}",
                     "append_to_response": "sources"
                 }
                 url = f"https://api.watchmode.com/v1/title/{wm_id}/details/"
@@ -126,7 +126,7 @@ def selection():
                 print("You need to provide a title.")
             else:
                 params = {
-                    "api_key": "ff3805871fc2a8fdea128d18f51ce96b",
+                    "api_key": "{YOUR API KEY HERE}",
                     "include_adult": False,
                     "include_video": False,
                     "language": "en-US",
@@ -151,7 +151,7 @@ def selection():
                         chosen_index = int(user_choice) - 1
                         tmdb_id = data[chosen_index]["id"]
                         watchmode_params = {
-                            "apiKey": "FKQxqKBVB3KxfSZRyzlvoba7Xpxu6IDjpPdNOMEX",
+                            "apiKey": "{YOUR API KEY HERE}",
                             "search_field": "tmdb_movie_id",
                             "search_value": tmdb_id
                         }
